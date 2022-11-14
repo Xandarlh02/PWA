@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //PrimeNG
 import {RippleModule} from 'primeng/ripple';
@@ -16,6 +17,7 @@ import {ToastModule} from 'primeng/toast';
 import {TableModule} from 'primeng/table';
 import {FileUploadModule} from 'primeng/fileupload';
 import {HttpClientModule} from '@angular/common/http';
+import {ImageModule} from 'primeng/image';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,6 +36,7 @@ import { environment } from '../environments/environment';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
 
      //primeng
     RippleModule,
@@ -49,6 +52,9 @@ import { environment } from '../environments/environment';
     TableModule,
     ToastModule,
     FileUploadModule,
+    ImageModule,
+
+
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,

@@ -17,7 +17,8 @@
                 <ng-template pTemplate="body" let-files >
                     <tr>
                         <td>
-                            <img src={{sanitizer.bypassSecurityTrustResourceUrl(files.objectURL.changingThisBreaksApplicationSecurity)}}/>
+                            <p-image [src]='getSafeUrl(files.objectURL.changingThisBreaksApplicationSecurity)' [preview]="true" alt="Image" width="95">
+                            </p-image>
                         </td>
                         <td>
                             {{files.name}}

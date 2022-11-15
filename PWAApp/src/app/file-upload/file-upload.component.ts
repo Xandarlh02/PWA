@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { File } from 'src/models/file';
 
 @Component({
   selector: 'app-file-upload',
@@ -10,6 +11,11 @@ export class FileUploadComponent implements OnInit {
 
   uploadedFiles: any[] = [];
   filename = ''
+
+  tempObj: File = new File;  
+  form:any
+
+
   display: boolean = false;
   display2: boolean = false;
 
@@ -22,13 +28,23 @@ export class FileUploadComponent implements OnInit {
   ngOnInit(): void { }
 
   //Handles uploading and clears the form after succesful upload
-  uploadFile(event: { files: any; }, form:any) {
-    for(let file of event.files) {
-      this.uploadedFiles.push(file);
-      console.log(file)
+  uploadFile() {
+      this.uploadedFiles.push(this.tempObj);
+      console.log(this.tempObj)
+      this.display2 = false;
+      this.form.clear();
+  }
+
+  beforeUploadDialog(event: { files: any; }, form:any){
+    this.display2 = true;
+    this.tempObj = {
+      name:event.files[0].name,
+      url:event.files[0].objectURL?.changingThisBreaksApplicationSecurity,
+      size:event.files[0].size,
+      type:event.files[0].type
     }
-      console.log(event.files)
-      form.clear();
+    this.form = form
+
   }
   
   showDialog(file:any) {

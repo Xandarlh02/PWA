@@ -1,5 +1,5 @@
 <!-- <p-fileUpload #form name="myfile[]" [customUpload]="true" accept="image/*" (uploadHandler)="uploadFile($event, form)"> -->
-<p-fileUpload #form name="myfile[]" [customUpload]="true" accept="image/*" (uploadHandler)="uploadFile($event, form)">
+<p-fileUpload #form name="myfile[]" [customUpload]="true" accept="image/*" (uploadHandler)="beforeUploadDialog($event, form)">
     <ng-template pTemplate="content">
         <p-table *ngIf="uploadedFiles.length" [value]="uploadedFiles" >
                 <ng-template pTemplate="header">
@@ -29,7 +29,7 @@
 
 <!-- Dialog for displaying file -->
 <p-dialog header="{{displayedFile?.name}}" [(visible)]="display" [style]="{width: '80vw'}">
-    <p-image *ngIf="display" [src]='getSafeUrl(displayedFile?.objectURL?.changingThisBreaksApplicationSecurity)' [preview]="true" alt="Image"
+    <p-image *ngIf="display" [src]='getSafeUrl(displayedFile.url)' [preview]="true" alt="Image"
         width="100" height="100%">
     </p-image>
     <p>{{displayedFile?.size}} Kb</p>
@@ -38,9 +38,9 @@
 <!-- Dialog for adding name to file -->
 <p-dialog [(visible)]="display2" [style]="{width: '80vw'}">
     <span class="p-float-label">
-        <input id="float-input" type="text" pInputText [(ngModel)]="filename">
+        <input id="float-input" type="text" pInputText [(ngModel)]="tempObj.name">
         <label for="float-input">File name</label>
     </span>
-    <button pTooltip="Show more"  pButton icon="pi pi-ellipsis-h"></button>
+    <button pTooltip="Show more" (click)="uploadFile()" pButton icon="pi pi-ellipsis-h"></button>
 
 </p-dialog>

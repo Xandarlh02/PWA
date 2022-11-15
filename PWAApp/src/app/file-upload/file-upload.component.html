@@ -1,4 +1,5 @@
-<p-fileUpload #form name="myfile[]" [customUpload]="true" (uploadHandler)="uploadFile($event, form)">
+<!-- <p-fileUpload #form name="myfile[]" [customUpload]="true" accept="image/*" (uploadHandler)="uploadFile($event, form)"> -->
+<p-fileUpload #form name="myfile[]" [customUpload]="true" accept="image/*" (uploadHandler)="uploadFile($event, form)">
     <ng-template pTemplate="content">
         <p-table *ngIf="uploadedFiles.length" [value]="uploadedFiles" >
                 <ng-template pTemplate="header">
@@ -7,7 +8,7 @@
                             Filename
                         </th>
                         <th>
-
+                            
                         </th>
                     </tr>
                 </ng-template>
@@ -17,21 +18,29 @@
                             {{files.name}}
                         </td>
                         <td>
-                            
-                        </td>
-                        <td>
                             <button pTooltip="Show more" (click)="showDialog(files)" pButton icon="pi pi-ellipsis-h"></button>
                         </td>
                     </tr>
                 </ng-template>
             </p-table>
     </ng-template>
+    
 </p-fileUpload>
 
-<p-dialog style="width: 80%;" header="Title" [(visible)]="display">
-    <p-image [src]='getSafeUrl(displayedFile?.objectURL?.changingThisBreaksApplicationSecurity)' [preview]="true" alt="Image"
-        width="95">
+<!-- Dialog for displaying file -->
+<p-dialog header="{{displayedFile?.name}}" [(visible)]="display" [style]="{width: '80vw'}">
+    <p-image *ngIf="display" [src]='getSafeUrl(displayedFile?.objectURL?.changingThisBreaksApplicationSecurity)' [preview]="true" alt="Image"
+        width="100" height="100%">
     </p-image>
-    <p>{{displayedFile?.name}}</p>
-    <p>{{displayedFile?.size}} kb</p>
+    <p>{{displayedFile?.size}} Kb</p>
+</p-dialog>
+
+<!-- Dialog for adding name to file -->
+<p-dialog [(visible)]="display2" [style]="{width: '80vw'}">
+    <span class="p-float-label">
+        <input id="float-input" type="text" pInputText [(ngModel)]="filename">
+        <label for="float-input">File name</label>
+    </span>
+    <button pTooltip="Show more"  pButton icon="pi pi-ellipsis-h"></button>
+
 </p-dialog>

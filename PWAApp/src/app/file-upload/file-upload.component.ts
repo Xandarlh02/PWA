@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
@@ -10,7 +9,9 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 export class FileUploadComponent implements OnInit {
 
   uploadedFiles: any[] = [];
+  filename = ''
   display: boolean = false;
+  display2: boolean = false;
 
   //This gets set when the dialog is opened, 
   //and the row you click on gets sent into the method "showDialog"
@@ -29,6 +30,7 @@ export class FileUploadComponent implements OnInit {
       console.log(event.files)
       form.clear();
   }
+  
   showDialog(file:any) {
     console.log(file)
     this.displayedFile = file

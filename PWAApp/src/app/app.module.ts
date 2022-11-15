@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 
 //PrimeNG
 import {RippleModule} from 'primeng/ripple';
@@ -19,6 +20,7 @@ import {FileUploadModule} from 'primeng/fileupload';
 import {HttpClientModule} from '@angular/common/http';
 import {ImageModule} from 'primeng/image';
 import {DialogModule} from 'primeng/dialog';
+import {InputTextModule} from 'primeng/inputtext';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -38,6 +40,7 @@ import { environment } from '../environments/environment';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
 
      //primeng
     RippleModule,
@@ -54,6 +57,7 @@ import { environment } from '../environments/environment';
     ToastModule,
     FileUploadModule,
     ImageModule,
+    InputTextModule,
     DialogModule,
 
 

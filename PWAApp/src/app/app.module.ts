@@ -18,6 +18,7 @@ import {TableModule} from 'primeng/table';
 import {FileUploadModule} from 'primeng/fileupload';
 import {HttpClientModule} from '@angular/common/http';
 import {ImageModule} from 'primeng/image';
+import {DialogModule} from 'primeng/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -53,6 +54,7 @@ import { environment } from '../environments/environment';
     ToastModule,
     FileUploadModule,
     ImageModule,
+    DialogModule,
 
 
     HttpClientModule,

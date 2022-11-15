@@ -29,6 +29,7 @@
 
 <!-- Dialog for displaying file -->
 <p-dialog header="{{displayedFile?.name}}" [(visible)]="display" [style]="{width: '80vw'}">
+    <br>
     <p-image *ngIf="display" [src]='getSafeUrl(displayedFile.url)' [preview]="true" alt="Image"
         width="100" height="100%">
     </p-image>
@@ -36,11 +37,11 @@
 </p-dialog>
 
 <!-- Dialog for adding name to file -->
-<p-dialog [(visible)]="display2" [style]="{width: '80vw'}">
+<p-dialog header="Set name for file" [(visible)]="display2" [style]="{width: '80vw'}">
     <span class="p-float-label">
         <input id="float-input" type="text" pInputText [(ngModel)]="tempObj.name">
-        <label for="float-input">File name</label>
     </span>
-    <button pTooltip="Show more" (click)="uploadFile()" pButton icon="pi pi-ellipsis-h"></button>
+    <br>
+    <button pTooltip="Show more" (click)="uploadFile()" pButton icon="pi pi-check"></button>
 
 </p-dialog>

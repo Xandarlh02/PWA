@@ -35,6 +35,8 @@ export class FileUploadComponent implements OnInit {
       this.form.clear();
   }
 
+  //This makes a tempObj, which is neccesary in order to map the uploaded file to our file Model, 
+  // and to change the filename
   beforeUploadDialog(event: { files: any; }, form:any){
     this.display2 = true;
     this.tempObj = {
@@ -53,6 +55,7 @@ export class FileUploadComponent implements OnInit {
     this.display = true;
   }
 
+  //Takes the "blob url" recieved from the upload and makes it displayable 
   getSafeUrl(url:string) {
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);     
   }
